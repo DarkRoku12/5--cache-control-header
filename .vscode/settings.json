@@ -1,0 +1,14 @@
+{
+  "[html]": {
+    // Use beautify to format the html file
+    "editor.defaultFormatter": "vscode.html-language-features",
+    // When saving html, eslint will be used to format the content in the script tag
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "html.format.contentUnformatted": "pre,code,textarea,script",
+  "html.format.unformatted": "wbr,script",
+  "html.format.extraLiners": "head, /html",
+  "html.format.indentInnerHtml": false
+}

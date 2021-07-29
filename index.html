@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <title> Cache control demo </title>
+  <meta charset="UTF-8">
+  <!-- Load JQuery 3 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Load fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<!-- Body -->
+<body>
+  <!-- Counter (without cache control) -->
+  <div>
+    <h3> Counter (without cache control) </h3>
+    <button id="counter-btn"> Call </button>
+    <span id="counter"> 0 </span>
+  </div>
+  <!-- Counter (with cache control) -->
+  <div>
+    <h3> Counter (with cache control) </h3>
+    <button id="counter-cache-control-btn"> Call </button>
+    <span id="counter-cache-control"> 0 </span>
+  </div>
+</body>
+
+<!-- JavaScript -->
+<script>
+  $( document ).ready( function()
+  {
+    // Click handler for: counter-btn.
+    $( "#counter-btn" ).click( async function()
+    {
+      const res  = await fetch( "/counter" );
+      const data = await res.json();
+      console.log( data );
+      $( "#counter" ).html( data.counter );
+    });
+
+    // Click handler for: counter-cache-control-btn.
+    $( "#counter-cache-control-btn" ).click( async function()
+    {
+      const res  = await fetch( "/counter-cache-control" );
+      const data = await res.json();
+      console.log( data );
+      $( "#counter-cache-control" ).html( data.counter );
+    });
+  });
+</script>
+
+<!-- Styles -->
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  div h3 {
+    color: #8500ff;
+    width: 350px;
+    font-size: 22px;
+  }
+
+  div span {
+    margin-left: 25px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  div button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 2px 2px;
+    cursor: pointer;
+  }
+</style>
+
+</html>
