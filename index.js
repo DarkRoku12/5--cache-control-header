@@ -24,7 +24,7 @@ let counter = 0;
 // Without cache.
 app.get( "/counter" , function( req , res )
 {
-  res.json({ from : "sample" , counter : ++counter });
+  res.json({ from : "counter" , counter : ++counter });
 });
 
 // With Cache-control.
@@ -32,7 +32,7 @@ app.get( "/counter-cache-control" , function( req , res )
 {
   const seconds = 10;
   res.set( "Cache-control" , `private, max-age=${seconds}` );
-  res.json({ from : "sample-cache-control" , counter : ++counter });
+  res.json({ from : "counter-cache-control" , counter : ++counter });
 });
 
 // Create the server.
